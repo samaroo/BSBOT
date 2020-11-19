@@ -1,0 +1,24 @@
+{
+  "name": "bsbot",
+  "version": "1.0.0",
+  "description": "A discord bot for Salesforce Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samaroo/BSBOT.git"
+  },
+  "keywords": [
+    "Discord",
+    "Bot",
+    "Salesforce"
+  ],
+  "author": "Brandon Samaroo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samaroo/BSBOT/issues"
+  },
+  "homepage": "https://github.com/samaroo/BSBOT#readme"
+}
