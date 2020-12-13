@@ -10,9 +10,22 @@ const client = new Discord.Client();
 // char to trigger bot command
 const trigger = "!";
 
-client.once("ready", () => {
-  console.log("Einstien Online!");
-});
+// This code is used for hosting, to keep the bot running 24/7
+var http = require('http');  
+
+http.createServer(function (req, res) {   
+  res.write("I'm alive");   
+  res.end(); 
+}).listen(8080);
+
+client.on('ready', () => {
+
+  console.log('Your Bot is now Online.')
+  let activities = [`chill gang`, `with the gang`, `with the gang`   ],i = 0;
+
+  setInterval(() => client.user.setActivity(`${activities[i++ %  activities.length]}`,  {type:"STREAMING",url:"https://www.youtube.com/watch?v=DWcJFNfaw9c"  }), 5000)
+
+})
 
 client.on("guildMemberAdd", (member) => {
   kevinToolbox.sendWelcomeMsg(member);
@@ -40,11 +53,11 @@ client.on("message", (message) => {
       break;
 
     case "addrole":
-      kevinToolbox.assignRole(message, words[1]);
+      kevinToolbox.addRole(message, words.slice(1));
       break;
 
     case "removerole":
-      kevinToolbox.removeRole(message, words[1]);
+      kevinToolbox.removeRole(message, words.slice(1));
       break;
   }
 });
@@ -54,3 +67,4 @@ const secret = token.generateToken();
 
 //login to bot
 client.login(secret);
+
