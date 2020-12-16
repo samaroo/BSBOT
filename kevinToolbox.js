@@ -23,6 +23,10 @@ const addRole = (message, roleArray) => {
     message.channel.send("Uh oh! Role does not exist.");
     return;
   }
+  else if (role === "owner" || role == "mod"){
+    message.channel.send("Nice try bud. (¬_¬)");
+    return;
+  }
   message.member.roles.add(role);
   message.channel.send("Success! Role added");
 };
