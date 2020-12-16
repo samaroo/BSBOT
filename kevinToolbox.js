@@ -15,9 +15,9 @@ const sendWelcomeMsg = (member) => {
 };
 
 const addRole = (message, roleArray) => {
-  var roleParam = roleArray.join(" ").toLowerCase();
-  var role = message.guild.roles.cache.find(
-    (role) => role.name.toLowerCase() === roleParam
+  let roleParam = roleArray.join(" ").toLowerCase();
+  let role = message.guild.roles.cache.find(
+    (roleInput) => roleInput.name.toLowerCase() === roleParam
   );
   if (!role) {
     message.channel.send("Uh oh! Role does not exist.");
@@ -28,9 +28,9 @@ const addRole = (message, roleArray) => {
 };
 
 const removeRole = (message, roleArray) => {
-  var roleParam = roleArray.join(" ").toLowerCase();
-  var role = message.guild.roles.cache.find(
-    (role) => role.name.toLowerCase() === roleParam
+  let roleParam = roleArray.join(" ").toLowerCase();
+  let role = message.guild.roles.cache.find(
+    (roleInput) => roleInput.name.toLowerCase() === roleParam
   );
   if (!role) {
     message.channel.send("Uh oh! Role does not exist.");
