@@ -1,6 +1,6 @@
 // Import the discord.js module
 const Discord = require("discord.js");
-const token = require("./token");
+//const token = require("./token");
 const basicToolbox = require("./basicToolbox");
 const kevinToolbox = require("./kevinToolbox");
 
@@ -63,8 +63,9 @@ client.on("message", (message) => {
 });
 
 //generate token from outside fucntion to keep token safe
-const secret = token.generateToken();
+//const secret = token.generateToken();
 
 //login to bot
-client.login(secret);
+//TOKEN environment variable is set in HEROKU
+client.login(process.env.TOKEN);
 
