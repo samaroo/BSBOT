@@ -63,6 +63,11 @@ client.on("message", (message) => {
     
     case "invite":
       brandonToolbox.generateInvite(message);
+      break;
+
+    case "eliminate":
+      brandonToolbox.eliminate(message, words.slice(1));
+      break;
   }
 });
 
