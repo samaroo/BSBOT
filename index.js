@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 //const token = require("./token");
 const basicToolbox = require("./basicToolbox");
 const kevinToolbox = require("./kevinToolbox");
+const brandonToolbox = require("./brandonToolbox");
 
 // Create an instance of a Discord client
 const client = new Discord.Client();
@@ -59,6 +60,9 @@ client.on("message", (message) => {
     case "removerole":
       kevinToolbox.removeRole(message, words.slice(1));
       break;
+    
+    case "invite":
+      brandonToolbox.generateInvite(message);
   }
 });
 
