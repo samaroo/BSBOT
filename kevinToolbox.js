@@ -10,7 +10,7 @@ const sendWelcomeMsg = (member) => {
         .get("772367983342387201")
         .toString()}, and ${member.guild.channels.cache
         .get("774524719458287616")
-        .toString()} if you would like to connect with us!`
+        .toString()} if you would like to connect with us! Also, go ahead and add your roles using the command **!addrole <role>** where role can be company or position`
     );
 };
 
@@ -23,7 +23,7 @@ const addRole = (message, roleArray) => {
     message.channel.send("Uh oh! Role does not exist.");
     return;
   }
-  if (role == "owner" || role == "mod"){
+  if (roleParam == "owner" || roleParam == "mod") {
     message.channel.send("Nice try bud. (¬_¬)");
     return;
   }
