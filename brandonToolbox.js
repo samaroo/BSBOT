@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 const reactRoll = () => {
     
 };
@@ -47,4 +49,22 @@ const eliminate = async (messageObj) => {
     }
 }
 
-module.exports = {generateInvite, eliminate};
+const help = (messageObj) => {
+    let embed = new Discord.MessageEmbed()
+        .setColor("#5dbcd2")
+        .setTitle("Command List:")
+        .setAuthor("Einstein", "https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/get_smart_einstein_feat/e33e22a729df2bb8c97845015ce5bb71_badge.png")
+        .addFields(
+            {name: "help", value: "Brings up a help menu with list of commands"},
+            {name: "future", value: "I will reply with \"Force!\""},
+            {name: "addRole <role>", value: "Adds <role> to caller's role list"},
+            {name: "removeRole <role>", value: "Removes <role> from caller's role list"},
+            {name: "invite", value: "Creates a 1 TIME USE invite that lasts 1 day"},
+            {name: "eliminate <target>", value: "Kicks <target> from server (ADMIN & MODS ONLY)"},
+        )
+    ;
+
+    messageObj.channel.send(embed);
+}
+
+module.exports = {generateInvite, eliminate, help};

@@ -68,6 +68,10 @@ client.on("message", (message) => {
     case "eliminate":
       brandonToolbox.eliminate(message, words.slice(1));
       break;
+    
+    case "help":
+      brandonToolbox.help(message);
+      break;
   }
 });
 
