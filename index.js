@@ -60,7 +60,15 @@ client.on("message", (message) => {
     case "removerole":
       kevinToolbox.removeRole(message, words.slice(1));
       break;
-    
+
+    case "roles":
+      kevinToolbox.listAllRoles(message);
+      break;
+
+    case "rolemembers":
+      kevinToolbox.listMembersWithRole(message, words.slice(1));
+      break;
+
     case "invite":
       brandonToolbox.generateInvite(message);
       break;

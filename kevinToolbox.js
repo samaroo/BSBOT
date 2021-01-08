@@ -1,3 +1,6 @@
+const Discord = require('discord.js');
+
+
 const sendWelcomeMsg = (member) => {
   member.guild.channels.cache
     .get("772363553834795032")
@@ -44,4 +47,48 @@ const removeRole = (message, roleArray) => {
   message.channel.send("Success! Role removed");
 };
 
-module.exports = { sendWelcomeMsg, addRole, removeRole };
+const listMembersWithRole = (message, roleArray) => {
+  let roleParam = roleArray.join(" ").toLowerCase();
+  const Role = message.guild.roles.cache.find(
+    (roleInput) => roleInput.name.toLowerCase() === roleParam
+  );
+
+  if (!Role) {
+    message.channel.send("Uh oh! Role does not exist.");
+    return;
+  }
+
+  const Members = message.guild.members.cache
+    .filter((member) => member.roles.cache.find((role) => role == Role))
+    .map((member) => member.user.tag + "\n");
+
+  const size = Members.length;
+
+  let listEmbed = new Discord.MessageEmbed()
+  .setColor("#5dbcd2")
+  .setTitle(`${size} Users with the ${Role.name} role:`)
+  .setAuthor("Einstein", "https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/get_smart_einstein_feat/e33e22a729df2bb8c97845015ce5bb71_badge.png")
+  .setDescription(Members);
+
+  message.channel.send(listEmbed);
+};
+
+const doNotInclude = (role) => {
+  return  !(role.name == "owner" || role.name == "mod" || role.name == "@everyone" || role.name == "Einstein (PreProd)" || role.name == "Einstein")
+};
+
+const listAllRoles = (message) => {
+  let roles = message.guild.roles.cache.filter(role => doNotInclude(role)).map(role => role.name + "\n")
+
+  const size = roles.length;
+
+  let rolesEmbed = new Discord.MessageEmbed()
+  .setColor("#5dbcd2")
+  .setTitle(`${size} roles:`)
+  .setAuthor("Einstein", "https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/get_smart_einstein_feat/e33e22a729df2bb8c97845015ce5bb71_badge.png")
+  .setDescription(roles);
+
+  message.channel.send(rolesEmbed);
+};
+
+module.exports = { sendWelcomeMsg, addRole, removeRole, listMembersWithRole, listAllRoles };

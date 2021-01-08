@@ -59,6 +59,8 @@ const help = (messageObj) => {
             {name: "future", value: "I will reply with \"Force!\""},
             {name: "addRole <role>", value: "Adds <role> to caller's role list"},
             {name: "removeRole <role>", value: "Removes <role> from caller's role list"},
+            {name: "roles", value: "Lists all the available roles in the server"},
+            {name: "rolemembers <role>", value: "Lists all the members with the given role"},
             {name: "invite", value: "Creates a 1 TIME USE invite that lasts 1 day"},
             {name: "eliminate <target>", value: "Kicks <target> from server (ADMIN & MODS ONLY)"},
         )
