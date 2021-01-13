@@ -1,31 +1,28 @@
 // Import the discord.js module
 const Discord = require("discord.js");
+const axios = require("axios");
 //const token = require("./token");
 const basicToolbox = require("./basicToolbox");
 const kevinToolbox = require("./kevinToolbox");
 const brandonToolbox = require("./brandonToolbox");
 
 // Create an instance of a Discord client
-const client = new Discord.Client();
+const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
-// char to trigger bot command
-const trigger = "!";
+const trigger = '!';
 
-// This code is used for hosting, to keep the bot running 24/7
-var http = require('http');  
+//instance of axios to make API calls
+const api = axios.create({
+  baseURL: process.env.BASE_URL,
+  timeout: 1000
+});
 
-http.createServer(function (req, res) {   
-  res.write("I'm alive");   
-  res.end(); 
-}).listen(8080);
-
-client.on('ready', () => {
+client.on('ready', async () => {
 
   console.log('Your Bot is now Online.')
   let activities = [`chill gang`, `with the gang`, `with the gang`   ],i = 0;
 
   setInterval(() => client.user.setActivity(`${activities[i++ %  activities.length]}`,  {type:"STREAMING",url:"https://www.youtube.com/watch?v=DWcJFNfaw9c"  }), 5000)
-
 })
 
 client.on("guildMemberAdd", (member) => {
@@ -41,10 +38,12 @@ client.on("message", (message) => {
   // Split by spaces to better determine commands
   const words = message.content.split(" ");
 
-  //get actual message without "!"
-  const msg = words[0].slice(trigger.length).toLowerCase();
+  //get actual command without "!"
+  const command = words[0].slice(trigger.length).toLowerCase();
 
-  switch (msg) {
+  console.log(command);
+
+  switch (command) {
     case "future":
       basicToolbox.futurePong(message);
       break;
@@ -80,11 +79,45 @@ client.on("message", (message) => {
     case "help":
       brandonToolbox.help(message);
       break;
+    
+    case "register":
+      brandonToolbox.registerServer(message);
+      break;
+
+    case "reactrole":
+      let title;
+
+      //check if command is formatted properly (with title and configJSON)
+      if(words.length > 2)
+        title = words[1];
+      else{
+        message.channel.send("Command formatted incorrectly, please try again.");
+        return;
+      }
+
+      var configJSON;
+      //check if config is in proper JSON notation
+      try{
+        config = basicToolbox.removeFirstWord(message.content);
+        configJSON = JSON.parse(basicToolbox.removeFirstWord(config));
+      }
+      catch(e){
+        message.channel.send("Config formatted incorrectly, please use JSON notation.");
+        return;
+      }
+
+      brandonToolbox.reactRole(message, title, configJSON);
+      break;
   }
 });
 
-//generate token from outside fucntion to keep token safe
-//const secret = token.generateToken();
+client.on('messageReactionAdd', async (reactionObj, user) => {
+	await basicToolbox.handleReact(reactionObj, user, api);
+});
+
+client.on('messageReactionRemove', async (reactionObj, user) => {
+  await basicToolbox.handleReact(reactionObj, user, api, false);
+})
 
 //login to bot
 //TOKEN environment variable is set in HEROKU

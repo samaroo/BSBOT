@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/samaroo/BSBOT#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "discord": "^0.8.2",
     "discord.js": "^12.5.1"
   }
