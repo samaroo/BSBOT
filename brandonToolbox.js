@@ -59,7 +59,7 @@ const reactRole = async (messageObj, title, configJSON) => {
         );
         //check to see if each role exists
         if (!role) {
-            messageObj.channel.send(`Following role does not exist: ${roleStr}. Please note that capitalization matters.`);
+            messageObj.channel.send(`The following role does not exist: ${roleStr}. Please note that capitalization matters.`);
             return;
         }
         //make sure no one is assigning themselves owner or mod
@@ -75,7 +75,7 @@ const reactRole = async (messageObj, title, configJSON) => {
         let unicodeEmojiFlag = false;
         if (!emoji){
             if(!basicToolBox.isEmoji(emojiStr)){
-                messageObj.channel.send(`Following emoji does not exist: ${emojiStr}. Please note that capitalization matters.`);
+                messageObj.channel.send(`The following emoji does not exist: ${emojiStr}. Please note that capitalization matters.`);
                 return;
             }
             unicodeEmojiFlag = true;
