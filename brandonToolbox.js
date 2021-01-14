@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const axios = require('axios');
 
+const basicToolBox = require('./basicToolbox');
+
 const api = axios.create({
     baseURL: process.env.BASE_URL,
     timeout: 1000
@@ -70,16 +72,20 @@ const reactRole = async (messageObj, title, configJSON) => {
             (emojiInput) => emojiInput.name === emojiStr
         );
         //check to see if each emoji exists
+        let unicodeEmojiFlag = false;
         if (!emoji){
-            messageObj.channel.send(`Following emoji does not exist: ${emojiStr}. Please note that capitalization matters.`);
-            return;
+            if(!basicToolBox.isEmoji(emojiStr)){
+                messageObj.channel.send(`Following emoji does not exist: ${emojiStr}. Please note that capitalization matters.`);
+                return;
+            }
+            unicodeEmojiFlag = true;
         }
 
         //for building roleToEmojiMap (different format than configJSON)
         roleToEmojiMap.push({role: roleStr, emoji: emojiStr});
 
         //building array used to create embed message
-        const emojiObj = getEmoji(emojiStr, messageObj);
+        const emojiObj = (unicodeEmojiFlag ? emojiStr : getEmoji(emojiStr, messageObj));
         embedFields.push({name: `${roleStr}  :  ${emojiObj}`, value: `\tTo obtain the \"${roleStr}\" role, react with \"${emojiObj}\"`});
     }
 
@@ -95,7 +101,7 @@ const reactRole = async (messageObj, title, configJSON) => {
     for (let roleStr in configJSON){
         let emojiStr = configJSON[roleStr];
         let emojiObject = getEmoji(emojiStr, messageObj);
-        embedMsg.react(emojiObject);
+        embedMsg.react(emojiObject ? emojiObject : emojiStr);
     }
 
     const responseStatus = await registerReactRoleMessage(embedMsg, roleToEmojiMap);

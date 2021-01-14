@@ -20,7 +20,7 @@ const api = axios.create({
 client.on('ready', async () => {
 
   console.log('Your Bot is now Online.')
-  let activities = [`chill gang`, `with the gang`, `with the gang`   ],i = 0;
+  let activities = [`chill gang`, `with the gang`, `with the gang`],i = 0;
 
   setInterval(() => client.user.setActivity(`${activities[i++ %  activities.length]}`,  {type:"STREAMING",url:"https://www.youtube.com/watch?v=DWcJFNfaw9c"  }), 5000)
 })
