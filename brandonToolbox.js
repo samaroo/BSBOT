@@ -177,4 +177,24 @@ const help = (messageObj) => {
     messageObj.channel.send(embed);
 }
 
+const introDM = (member) => {
+    let embed = new Discord.MessageEmbed()
+        .setColor("#5dbcd2")
+        .setTitle("Command List:")
+        .setAuthor("Einstein", "https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/get_smart_einstein_feat/e33e22a729df2bb8c97845015ce5bb71_badge.png")
+        .addFields(
+            {name: "help", value: "Brings up a help menu with list of commands"},
+            {name: "future", value: "I will reply with \"Force!\""},
+            {name: "addRole <role>", value: "Adds <role> to caller's role list"},
+            {name: "removeRole <role>", value: "Removes <role> from caller's role list"},
+            {name: "roles", value: "Lists all the available roles in the server"},
+            {name: "rolemembers <role>", value: "Lists all the members with the given role"},
+            {name: "invite", value: "Creates a 1 TIME USE invite that lasts 1 day"},
+            {name: "eliminate <target>", value: "Kicks <target> from server (ADMIN & MODS ONLY)"},
+        )
+    ;
+
+    member.send(embed);
+}
+
 module.exports = {registerServer, reactRole, generateInvite, eliminate, help};

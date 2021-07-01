@@ -27,7 +27,7 @@ client.on('ready', async () => {
 
 client.on("guildMemberAdd", (member) => {
   kevinToolbox.sendWelcomeMsg(member);
-  member.send("Testting New Feature!");
+  brandonToolbox.introDM(member);
 });
 
 client.on("message", (message) => {
