@@ -22,11 +22,12 @@ client.on('ready', async () => {
   console.log('Your Bot is now Online.')
   let activities = [`chill gang`, `with the gang`, `with the gang`],i = 0;
 
-  setInterval(() => client.user.setActivity(`${activities[i++ %  activities.length]}`,  {type:"STREAMING",url:"https://www.youtube.com/watch?v=DWcJFNfaw9c"  }), 5000)
+  setInterval(() => client.user.setActivity(`${activities[i++ %  activities.length]}`,  {type:"STREAMING",url:"https://www.youtube.com/watch?v=DWcJFNfaw9c"}), 5000)
 })
 
 client.on("guildMemberAdd", (member) => {
   kevinToolbox.sendWelcomeMsg(member);
+  member.send("Testting New Feature!");
 });
 
 client.on("message", (message) => {
