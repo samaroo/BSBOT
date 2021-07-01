@@ -189,6 +189,7 @@ const introDM = (member) => {
         .setAuthor("Einstein", "https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/get_smart_einstein_feat/e33e22a729df2bb8c97845015ce5bb71_badge.png")
         .addFields(
             {name: "Roles", value: "The most important thing to set up for this server are your roles. Roles are essentially tags that helps me categorize you guys! You can assign yourself some in the \"roles\" channel!"},
+            {name: "Channels", value: "There are a variety of channels in the server all of which pertain to a specific topic of conversation so make sure to exlpore them all! The main channel is \"ohana_floor\" which serves as the general chat for the server!"},
             {name: "Nicknames", value: "A lot of the people in the server have edited their nicknames in the server to display their actual, full name along with pronouns so we can communicate better! You can modify your nickname in the server by clicking your profile picture and selecting \"edit server nickname\""},
             {name: "LinkedIn", value: "I love to see when you guy network with each other so there is a \"linkedIn\" channel in the server where you can drop a link to your profile!"},
             {name: "Instagram", value: "Since this is not super serious, we also promote casual netowrking so we have an \"instagram\" channel for friendly connections!"}

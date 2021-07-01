@@ -4,19 +4,9 @@ const sendWelcomeMsg = (member) => {
     member.guild.channels.cache
         .get("772363553834795032")
         .send(
-            `Welcome <@${
+            `Everyone give a warm welcome to, <@${
                 member.user.id
-            }>! Please feel free to drop your ${member.guild.channels.cache
-                .get("772480723096961034")
-                .toString()}, ${member.guild.channels.cache
-                .get("772367983342387201")
-                .toString()}, and ${member.guild.channels.cache
-                .get("774524719458287616")
-                .toString()} if you would like to connect with us! Also, go ahead and add your roles in the ${member.guild.channels.cache.get(
-                "798764965774229565"
-            )} channel and your pronouns to your nickname. If you are ever stuck, use command **!help** in ${member.guild.channels.cache.get(
-                "798764965774229565"
-            )}`
+            }> :)`
         );
 };
 
