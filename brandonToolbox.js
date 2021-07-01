@@ -178,19 +178,20 @@ const help = (messageObj) => {
 }
 
 const introDM = (member) => {
+
+    member.send("Welcome to the FutureForce 2021 Discord server, thank you for joining!");
+    member.send("My name is Einstein and I am the bot that manages the discord server! I can do everything you could possibly need from generating invites, to assigning roles!");
+    member.send("This is a really laid back server for the interns to just chill and have fun so don't take it seriously at all :)");
+
     let embed = new Discord.MessageEmbed()
         .setColor("#5dbcd2")
-        .setTitle("Command List:")
+        .setTitle("Getting Started and Set Up")
         .setAuthor("Einstein", "https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/get_smart_einstein_feat/e33e22a729df2bb8c97845015ce5bb71_badge.png")
         .addFields(
-            {name: "help", value: "Brings up a help menu with list of commands"},
-            {name: "future", value: "I will reply with \"Force!\""},
-            {name: "addRole <role>", value: "Adds <role> to caller's role list"},
-            {name: "removeRole <role>", value: "Removes <role> from caller's role list"},
-            {name: "roles", value: "Lists all the available roles in the server"},
-            {name: "rolemembers <role>", value: "Lists all the members with the given role"},
-            {name: "invite", value: "Creates a 1 TIME USE invite that lasts 1 day"},
-            {name: "eliminate <target>", value: "Kicks <target> from server (ADMIN & MODS ONLY)"},
+            {name: "Roles", value: "The most important thing to set up for this server are your roles. Roles are essentially tags that helps me categorize you guys! You can assign yourself some in the \"roles\" channel!"},
+            {name: "Nicknames", value: "A lot of the people in the server have edited their nicknames in the server to display their actual, full name along with pronouns so we can communicate better! You can modify your nickname in the server by clicking your profile picture and selecting \"edit server nickname\""},
+            {name: "LinkedIn", value: "I love to see when you guy network with each other so there is a \"linkedIn\" channel in the server where you can drop a link to your profile!"},
+            {name: "Instagram", value: "Since this is not super serious, we also promote casual netowrking so we have an \"instagram\" channel for friendly connections!"}
         )
     ;
 
