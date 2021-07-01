@@ -197,4 +197,4 @@ const introDM = (member) => {
     member.send(embed);
 }
 
-module.exports = {registerServer, reactRole, generateInvite, eliminate, help};
+module.exports = {registerServer, reactRole, generateInvite, eliminate, help, introDM};
